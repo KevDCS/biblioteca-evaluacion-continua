@@ -6,7 +6,7 @@ public class autor {
 
     // Atributos
     String nombre;
-    private ArrayList<libro> librosAutor;
+    public ArrayList<libro> librosAutor;
 
 
     // Constructores

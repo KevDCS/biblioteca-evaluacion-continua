@@ -1,6 +1,5 @@
 package org.biblioteca;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class libro {
@@ -9,7 +8,7 @@ public class libro {
     String titulo;
     String autor; //referencia a clase Autor
     boolean disponible;
-    private ArrayList<libro> libros; //  libros = new ArrayList<>()
+    public ArrayList<libro> libros; //  libros = new ArrayList<>()
 
 
     // Constructores

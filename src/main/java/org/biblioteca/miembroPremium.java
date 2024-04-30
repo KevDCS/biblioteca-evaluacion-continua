@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class miembroPremium {
 
     // Atributos
-    private ArrayList<libro> librosReservados;
+    public ArrayList<libro> librosReservados;
 
 
     // Constructores

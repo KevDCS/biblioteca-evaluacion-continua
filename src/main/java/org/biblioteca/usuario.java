@@ -6,7 +6,7 @@ public class usuario {
 
     // Atributos
     String nombre;
-    private ArrayList<libro> librosPrestados;
+    public ArrayList<libro> librosPrestados;
 
 
     // Constructor
