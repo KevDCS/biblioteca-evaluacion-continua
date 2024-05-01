@@ -18,16 +18,18 @@ public class Usuario {
 
     // Atributos
     String nombre;
-    private ArrayList<Libro> libros;
+    String suscripcion;
+    private ArrayList<Libro> librosPrestados;
 
 
     // Construtores
     public Usuario() {
     }
 
-    public Usuario(String nombre) {
+    public Usuario(String nombre, String suscripcion) {
         this.nombre = nombre;
-        this.libros = new ArrayList<>();
+        this.suscripcion = suscripcion;
+        this.librosPrestados = new ArrayList<>();
     }
 
 
@@ -40,12 +42,20 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public String getSuscripcion() {
+        return suscripcion;
+    }
+
+    public void setSuscripcion(String suscripcion) {
+        this.suscripcion = suscripcion;
+    }
+
     public ArrayList<Libro> getLibros() {
-        return libros;
+        return librosPrestados;
     }
 
     public void setLibros(ArrayList<Libro> libros) {
-        this.libros = libros;
+        this.librosPrestados = libros;
     }
 
 
@@ -57,7 +67,7 @@ public class Usuario {
         if (libro.getDisponible()){
         libro.setDisponible(false);
         System.out.println("El libro \"" + libro.getTitulo() + "\" ha sido reservado con exito.");
-        libros.add(libro);
+            librosPrestados.add(libro); // Se agrega libro al array de libros_prestados
         } else {
             System.out.println("El libro \"" + libro.getTitulo() + "\" no esta disponible para reserva porque ya se encuentra reservado.");
         }
@@ -69,7 +79,7 @@ public class Usuario {
         if (libro.getDisponible() == false) {
         System.out.println("El libro \"" + libro.getTitulo() + "\" ha sido devuelto con exito.");
         libro.setDisponible(true);
-        libros.remove(libro);
+            librosPrestados.remove(libro); // Se elimina libro del array libros_prestados
         } else {
             System.out.println("******No puedes devolver el libro \"" + libro.getTitulo() + "\" porque no lo has reservado******");
         }

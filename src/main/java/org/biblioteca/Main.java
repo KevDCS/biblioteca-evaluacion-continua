@@ -31,10 +31,11 @@ public class Main {
         autor2.publicar_libro(libro5);
         autor2.publicar_libro(libro6);
 
+        // Se listan los libros publicados de cada autor
         autor1.listarLibrosPublicados(autor1);
         autor2.listarLibrosPublicados(autor2);
 
-        // Imprime en consola todos los libros creados de todos los autores con sus estados
+        // Imprime en consola todos los libros creados de todos los autores con sus estados iniciale
         System.out.println("----------------------------");
         System.out.println("Estado inicial de libros: ");
         System.out.println("----------------------------");
@@ -43,6 +44,7 @@ public class Main {
                     + ((libro.getDisponible()) ? "Disponible" : "Reservado"));
         }
 
+        // Hago uso de los metodos de la clase Libro
         System.out.println("----------------------------");
         System.out.println("Transacciones hechas desde clase Libro: ");
         libro4.marcar_prestado(libro4);
@@ -51,17 +53,13 @@ public class Main {
 
 
         System.out.println("----------------------------");
-
-        // Se crea un usuario con un libro
-        Usuario user1 = new Usuario("Kevin");
+        // Se crea un usuario con un libro y reservamos libros
+        Usuario user1 = new Usuario("Kevin", "Normal");
         System.out.println("Libros a reservar por el usuario - " + user1.getNombre());
-        //libro4.setDisponible(true);
-        user1.tomar_prestado(libro4); // Biblioteca de la medianoche
+        user1.tomar_prestado(libro4);
         user1.tomar_prestado(libro5);
         user1.tomar_prestado(libro6);
-//        user1.tomar_prestado(libro2);
-//        user1.tomar_prestado(libro2);
-//        user1.tomar_prestado(libro1);
+
 
 
         // Se imprimen los libros reservados por el usuario
@@ -71,18 +69,31 @@ public class Main {
             System.out.println("- " + libro.getTitulo());
         }
 
-        // Se indica el libro al que se le asigna el metodo marcar_devuelto desde la clase Libro
+        // Se le envia por parametro el libro al metodo devolver_libro de la clase Usuario,
+        // este metodo cambia el estado y elimina del array librosPrestados
         // y devuelve un mensaje en consola indicando que el libro ha sido devuelto
         System.out.println("----------------------------");
         System.out.println("Libros devueltos por \"" + user1.getNombre() + "\":");
         user1.devolver_libro(libro4);
         user1.devolver_libro(libro1);
-        // Se indica el libro al que se le asigna el metodo marcar_devuelto desde la clase libro
-        // y devuelve un mensaje en consola indicando que el
+
+        // Se le envia por parametro el libro al metodo tomar_prestado de la clase Usuario,
+        // este metodo cambia el estado y agrega el libro al array librosPrestados
+        // y devuelve un mensaje en consola indicando que el libro ha sido prestado/reservado.
         System.out.println("----------------------------");
         System.out.println("Libros prestados a \"" + user1.getNombre() + "\":");
         user1.tomar_prestado(libro1);
         user1.tomar_prestado(libro6);
 
+
+        // Acciones con usuarios premium
+        // Reservamos y listamos libros de usuario premium, que estan reservados por otros usuarios,
+        // y que se asignan al array librosReservados de la clase MiembroPremium
+        System.out.println("----------------------------");
+        System.out.println("***Acciones con usuarios premium***:");
+        MiembroPremium miembroPremium = new MiembroPremium("Michael", "Premium");
+        miembroPremium.reservarLibro(libro1, miembroPremium);
+        miembroPremium.reservarLibro(libro3, miembroPremium);
+        miembroPremium.listaLibrosReservadosPremium(miembroPremium);
     }
 }
